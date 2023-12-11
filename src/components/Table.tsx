@@ -2,36 +2,51 @@ import { useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
 function Table() {
-  const { expanses } = useSelector((state) => state.wallet);
+  const { expenses } = useSelector((state) => state.wallet);
+  console.log(expenses);
 
   return (
+    <header>
 
-    <table>
-      <tr>
-        <th>Descrição</th>
-        <th>Tag</th>
-        <th>Método de pagamento</th>
-        <th>Valor</th>
-        <th>Moeda</th>
-        <th>Câmbio utilizado</th>
-        <th>Valor convertido</th>
-        <th>Moeda de conversão</th>
-        <th>Editar/Excluir</th>
-      </tr>
       {' '}
-      {expanses.map((valores :any) => (
-        <table key={ nanoid() }>
-          <th>{valores}</th>
-          <th>valores</th>
-          <th>Método de pagamento</th>
-          <th>Valor</th>
-          <th>Moeda</th>
-          <th>Câmbio utilizado</th>
-          <th>Moeda de conversão</th>
-        </table>
+      {expenses.map((valores :any) => (
+        <tr key={ nanoid() }>
+          <td>
+            Descrição
+            {valores.description}
 
+          </td>
+          <td>
+            {' '}
+            Tag
+            {valores.tag}
+          </td>
+          <td>
+            Método de pagamento
+            {valores.method}
+          </td>
+          <td>
+            Valor
+            {' '}
+            {valores.value}
+          </td>
+          <td>
+            Moeda
+            {' '}
+            {`${valores.exchangeRates.name}/Real Brasileiro` }
+          </td>
+          <td>
+            Câmbio utilizade
+            {valores.currency}
+          </td>
+          <td>
+            Moeda de conversão
+            {' '}
+            {valores.exchangeRates.ask}
+          </td>
+        </tr>
       ))}
-    </table>
+    </header>
 
   );
 }

@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 function Header() {
-  const valor = useSelector((state) => state.wallet.expenses);
-  const [despesa] = useState(0);
+  const { expenses } = useSelector((state) => state.wallet);
+  const [despesa, setDespensa] = useState(0);
   const [cambio] = useState('BRL');
-  const dispensa = valor.map((valo: any) => {
-    return valo;
-  });
-  console.log(valor);
-  console.log(dispensa.value);
-
+  useEffect(() => {
+    // const filtrando = expenses.find((testando) => (
+    //   testando.currency === testando.exchangeRates.currency));
+    // console.log(filtrando);
+    const valorfinal = expenses
+      .reduce((accumulator:any, currentValue:any) => (
+        accumulator + Number(currentValue.exchangeRates[currentValue.currency]), 0));
+    setDespensa((valorfinal.toFixed(2)));
+  }, [expenses]);
   const { email } = useSelector((state) => state.user);
   return (
     <ul>

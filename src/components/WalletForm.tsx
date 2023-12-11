@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Fetch, FetchApi, form } from '../redux/actions';
+import { Fetch, FetchApi } from '../redux/actions';
 
 function WalletForm() {
   const dispatch = useDispatch();
@@ -69,6 +69,7 @@ function WalletForm() {
       <select
         data-testid="currency-input"
         onChange={ handleChange }
+        name="currency"
       >
         {currencies.map((pais:any) => (
 
