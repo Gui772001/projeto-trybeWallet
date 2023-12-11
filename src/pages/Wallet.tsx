@@ -5,9 +5,9 @@ import WalletForm from '../components/WalletForm';
 function Wallet() {
   return (
     <>
-      {/* <Table /> */}
       <Header />
       <WalletForm />
+      <Table />
     </>
   );
 }

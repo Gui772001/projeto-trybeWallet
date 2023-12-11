@@ -35,7 +35,7 @@ function WalletForm() {
 
         setForm({
           id: formData.id + 1,
-          value: 0,
+          value: '',
           description: '',
           currency: 'USD',
           method: 'Dinheiro',

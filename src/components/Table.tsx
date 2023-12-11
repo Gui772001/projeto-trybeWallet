@@ -1,52 +1,55 @@
 import { useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 
 function Table() {
   const { expenses } = useSelector((state) => state.wallet);
-  console.log(expenses);
 
   return (
-    <header>
-
-      {' '}
-      {expenses.map((valores :any) => (
-        <tr key={ nanoid() }>
+    <table>
+      <tr>
+        <th>
+          Descrição
+        </th>
+        <th>
+          Tag
+        </th>
+        <th>
+          Método de pagamento
+        </th>
+        <th>
+          Valor
+        </th>
+        <th>
+          Moeda
+        </th>
+        <th>
+          Câmbio utilizado
+        </th>
+        <th>
+          Valor convertido
+        </th>
+        <th>
+          Moeda de conversão
+        </th>
+        <th>
+          Editar/Excluir
+        </th>
+      </tr>
+      {expenses.map((despesas:any, index:any) => (
+        <tr key={ index }>
+          <td>{despesas.description}</td>
+          <td>{despesas.tag}</td>
+          <td>{despesas.method}</td>
+          <td>{despesas.value}</td>
           <td>
-            Descrição
-            {valores.description}
-
+            {despesas.exchangeRates[despesas.currency].name}
           </td>
+          <td>{despesas.currency}</td>
+          <td>{despesas.exchangeRates[despesas.currency].ask}</td>
           <td>
-            {' '}
-            Tag
-            {valores.tag}
+            Real
           </td>
-          <td>
-            Método de pagamento
-            {valores.method}
-          </td>
-          <td>
-            Valor
-            {' '}
-            {valores.value}
-          </td>
-          <td>
-            Moeda
-            {' '}
-            {`${valores.exchangeRates.name}/Real Brasileiro` }
-          </td>
-          <td>
-            Câmbio utilizade
-            {valores.currency}
-          </td>
-          <td>
-            Moeda de conversão
-            {' '}
-            {valores.exchangeRates.ask}
-          </td>
-        </tr>
-      ))}
-    </header>
+        </tr>))}
+    </table>
 
   );
 }

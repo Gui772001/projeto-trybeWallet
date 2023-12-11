@@ -6,12 +6,10 @@ function Header() {
   const [despesa, setDespensa] = useState(0);
   const [cambio] = useState('BRL');
   useEffect(() => {
-    // const filtrando = expenses.find((testando) => (
-    //   testando.currency === testando.exchangeRates.currency));
-    // console.log(filtrando);
     const valorfinal = expenses
-      .reduce((accumulator:any, currentValue:any) => (
-        accumulator + Number(currentValue.exchangeRates[currentValue.currency]), 0));
+      .reduce((acc:any, curr:any) => (
+        acc + (Number(curr.exchangeRates[curr.currency].ask) * curr.value)
+      ), 0);
     setDespensa((valorfinal.toFixed(2)));
   }, [expenses]);
   const { email } = useSelector((state) => state.user);
