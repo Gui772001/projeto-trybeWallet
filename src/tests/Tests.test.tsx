@@ -11,27 +11,21 @@ describe('Teste se a um formulario do tipo email', () => {
     expect(email).toBeInTheDocument();
   });
 });
+
 describe('Teste se a um formulario do tipo senha', () => {
   it('teste', async () => {
     renderWithRouterAndRedux(<App />);
-    const senha = screen.getByTestId('password-input');
-    expect(senha).toBeInTheDocument();
-  });
-});
-describe('Teste se a um formulario do tipo senha', () => {
-  it('teste', async () => {
-    renderWithRouterAndRedux(<App />);
-    const senha = screen.getByTestId('password-input');
-    expect(senha).toBeInTheDocument();
+    const senha4 = screen.getByTestId('password-input');
+    expect(senha4).toBeInTheDocument();
   });
 });
 describe('Teste se apertar o botão entrar transfere para carteiras', () => {
   it('teste', async () => {
     renderWithRouterAndRedux(<App />);
-    const email = screen.getByTestId('email-input');
-    const senha = screen.getByTestId('password-input');
-    await userEvent.type(email, 'tryber@teste.com');
-    await userEvent.type(senha, '1234567');
+    const email1 = screen.getByTestId('email-input');
+    const senha1 = screen.getByTestId('password-input');
+    await userEvent.type(email1, 'tryber@teste.com');
+    await userEvent.type(senha1, '1234567');
     const homeLink = screen.getByRole('button', { name: 'Entrar' });
     expect(homeLink).toBeEnabled();
     await userEvent.click(homeLink);
