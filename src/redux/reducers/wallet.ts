@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { ADD_API, ADD_FORM } from '../actions';
+import { ADD_API, ADD_ARRAY, ADD_FORM } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -22,6 +22,11 @@ const wallet = (state = INITIAL_STATE, action:AnyAction) => {
         expenses: [...state.expenses, action.payload],
         idToEdit: action.payload.id,
 
+      };
+    case ADD_ARRAY:
+      return {
+        ...state,
+        expenses: action.payload,
       };
 
     default:
